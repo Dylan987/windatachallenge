@@ -18,11 +18,11 @@ def split_df(df): # returns an array where each element is one traffic type of t
     return split_arr
 
 dorchester_data = pd.read_csv("CityOfWindsorData/Count/Dorchester Road and Huron Church Road.csv",
-                              parse_dates=["Start Time"], header=10)
+                              parse_dates=["Start Time"], header=10, engine='python')
 malden_data = pd.read_csv("CityOfWindsorData/Count/Malden Road and Huron Church Road.csv",
-                          parse_dates=["Start Time"], header=10)
+                          parse_dates=["Start Time"], header=10, engine='python')
 totten_data = pd.read_csv("CityOfWindsorData/Count/Totten Street and Huron Church Road.csv",
-                          parse_dates=["Start Time"], header=10)
+                          parse_dates=["Start Time"], header=10, engine='python')
 # print(dorchester_data)
 
 dorchester_arr = split_df(dorchester_data)
