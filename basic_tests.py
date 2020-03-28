@@ -29,8 +29,8 @@ dorchester_arr = split_df(dorchester_data)
 malden_arr = split_df(malden_data)
 totten_data = split_df(totten_data)
 
-for df in dorchester_arr:
-    print(df)
+#for df in dorchester_arr:
+#    print(df)
 
 # dorchester_n.set_index('Start Time', inplace=True)
 
