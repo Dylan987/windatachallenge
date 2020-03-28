@@ -2,7 +2,37 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-dorchester_data = pd.read_csv("CityOfWindsorData/Count/Dorchester Road and Huron Church Road.csv", header=10, skipfooter=23056)
-malden_data = pd.read_csv("CityOfWindsorData/Count/Malden Road and Huron Church Road.csv", header=10, skipfooter=23056)
-totten_data = pd.read_csv("CityOfWindsorData/Count/Totten Street and Huron Church Road.csv", header=10, skipfooter=23056)
-print(dorchester_data)
+def convert_to_int(df): # converts all numeric rows to int64
+    cols = df.columns.drop('Start Time')
+    df[cols] = df[cols].apply(pd.to_numeric, errors='coerce')
+
+def split_df(df): # returns an array where each element is one traffic type of the data (ex. buses)
+    split_arr = []
+    start = 0
+    end = 5670
+    while (end < 40344):
+        split_arr.append(df.iloc[start:end].copy())
+        convert_to_int(split_arr[-1])
+        start += 5764
+        end = start + 5760
+    return split_arr
+
+dorchester_data = pd.read_csv("CityOfWindsorData/Count/Dorchester Road and Huron Church Road.csv",
+                              parse_dates=["Start Time"], header=10)
+malden_data = pd.read_csv("CityOfWindsorData/Count/Malden Road and Huron Church Road.csv",
+                          parse_dates=["Start Time"], header=10, skipfooter=23056, engine='python')
+totten_data = pd.read_csv("CityOfWindsorData/Count/Totten Street and Huron Church Road.csv",
+                          parse_dates=["Start Time"], header=10, skipfooter=23056, engine='python')
+# print(dorchester_data)
+
+dorchester_arr = split_df(dorchester_data)
+malden_arr = split_df(malden_data)
+totten_data = split_df(totten_data)
+
+for df in dorchester_arr:
+    print(df)
+
+# dorchester_n.set_index('Start Time', inplace=True)
+
+# ax = dorchester_n['Right'].plot()
+# plt.show()
