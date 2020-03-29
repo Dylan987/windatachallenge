@@ -19,10 +19,12 @@ def update():
     plot_any(data['intersection'], data['direction'], data['traffic'])
     return "it worked"
 
+@app.route('/analysis.html')
+def analysis():
+    return render_template("analysis.html")
 
 
-@app.route('/home.html')
-@app.route('/home')
+@app.route('/dashboard.html')
 def hello_world():
     return render_template("site.html")
 
