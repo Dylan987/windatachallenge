@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 #import graphs_test
-from day_aggregate import plot_any  
+from day_aggregate import plot_any
 
 app = Flask(__name__)
 
