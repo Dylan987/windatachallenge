@@ -3,7 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from basic_tests import dorchester_arr, malden_arr, totten_arr
 
-# Plots right, left &
+## Testing data plotting
+# Plots right, left, through, u-turn
 d_lights_n = dorchester_arr[0].iloc[:, :6]
 plt.ylabel('Amount of Traffic')
 plt.xlabel('Date/Time')

@@ -11,8 +11,11 @@ def split_df(df): # returns an array where each element is one traffic type of t
     start = 0
     end = 5670
     while (end < 40344):
-        split_arr.append(df.iloc[start:end].copy())
-        convert_to_int(split_arr[-1])
+        new_df = df.iloc[start:end].copy()
+        convert_to_int(new_df)
+        new_df['Start Time'] = pd.to_datetime(new_df['Start Time'])
+        new_df.set_index(['Start Time'], inplace=True)
+        split_arr.append(new_df)
         start += 5764
         end = start + 5760
     return split_arr
