@@ -15,3 +15,22 @@ header {
   display: flex;
   flex-direction: row;
 }
+
+.street-buttons {
+  padding: 20px;
+  display:flex;
+  flex-direction: column;
+}
+
+.direction-buttons {
+  padding: 20px;
+  display:flex;
+  flex-direction: column;
+}
+
+.vehicle-buttons {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
