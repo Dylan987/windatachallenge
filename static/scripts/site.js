@@ -5,8 +5,10 @@ $(document).ready(function() {
     let current_vehicle = 0;
     
     // add the event listeners
-    const update_graph = function(){
+    const update_graph = function() {
         // call the AJAX method with the given params 
+        $.get(window.location.host + "/update_graph" + "?intersection=" + current_street + "&direction=" + current_direction + "&traffic=" + current_vehicle);
+        // update the css
     };
 
 
