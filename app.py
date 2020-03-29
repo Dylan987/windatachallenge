@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 import graphs_test
 
 app = Flask(__name__)
-@app.route('/')
+@app.route('/home.html')
+@app.route('/home')
 def hello_world():
     return render_template("test.html")
 
