@@ -50,3 +50,60 @@ iframe {
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.street-1-button-selected {
+  color: red;
+}
+
+.street-2-button-selected {
+  color: red;
+}
+
+.street-3-button-selected {
+  color: red;
+}
+
+.north-button-selected {
+  color: blue;
+}
+
+.east-button-selected {
+  color: blue;
+}
+
+.south-button-selected {
+  color: blue;
+}
+
+.west-button-selected {
+  color: blue;
+}
+
+.general-traffic-button-selected {
+  color: blue;
+}
+
+.single-unit-trucks-button-selected {
+  color: blue;
+}
+
+.articulated-trucks-button-selected {
+  color: blue;
+}
+
+.buses-button-selected {
+  color: blue;
+}
+
+
+.work-vans-button-selected {
+  color: blue;
+}
+
+.bicycles-button-selected {
+  color: blue;
+}
+
+.pedestrians-button-selected {
+  color: blue;
+}
