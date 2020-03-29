@@ -3,6 +3,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from basic_tests import dorchester_arr, malden_arr, totten_arr
 from day_aggregate import plot_any, plot_one
+import pandas_bokeh
+
+plt.close('all')
+
+pd.set_option('plotting.backend', 'pandas_bokeh')
 
 intersections = [dorchester_arr, malden_arr, totten_arr]
 agg_i = []
@@ -27,37 +32,37 @@ def destination_traffic(dest):
         df['N Huron Church-D'] = agg_i[0][['Thru', 'Left.1', 'Right.3', 'U-Turn.2']].sum(axis=1)
         df['N Huron Church-T'] = agg_i[1][['Thru', 'Left.1', 'Right.3', 'U-Turn.2']].sum(axis=1)
         df['N Huron Church-M'] = agg_i[2][['Thru', 'Left.1', 'Right.3', 'U-Turn.2']].sum(axis=1)
-        df['N Huron Church-All'] = df[['N Huron Church-D', 'N Huron Church-M', 'N Huron Church-T']].sum(axis=1)
+        df['N Huron Church'] = df[['N Huron Church-D', 'N Huron Church-M', 'N Huron Church-T']].sum(axis=1)
     elif dest == 1:
         #dest 1: dnr, det, dwu, dsl, tnt, tel, twr, tsu, mnt, mel, mwr, msu
         df['E Dorch-D'] = agg_i[0][['Right', 'Thru.1', 'U-Turn.3', 'Left.2']].sum(axis=1)
         df['E Dorch-T'] = agg_i[0][['Thru', 'Left.1', 'Right.3', 'U-Turn.2']].sum(axis=1)
         df['E Dorch-M'] = agg_i[0][['Thru', 'Left.1', 'Right.3', 'U-Turn.2']].sum(axis=1)
-        df['E Dorch-All'] = df[['E Dorch-D', 'E Dorch-M', 'E Dorch-T']].sum(axis=1)
+        df['E Dorchester'] = df[['E Dorch-D', 'E Dorch-M', 'E Dorch-T']].sum(axis=1)
     elif dest == 2:
         #dest 2: tnr, tet, twu, tsl, dnu, der, dwl, dst, mnt, mel, mwr, msu
         df['E Totten-D'] = agg_i[0][['U-Turn', 'Right.1', 'Left.3', 'Thru.2']].sum(axis=1)
         df['E Totten-T'] = agg_i[0][['Right', 'Thru.1', 'U-Turn.3', 'Left.2']].sum(axis=1)
         df['E Totten-M'] = agg_i[0][['Thru', 'Left.1', 'Right.3', 'U-Turn.2']].sum(axis=1)
-        df['E Totten-All'] = df[['E Totten-D', 'E Totten-M', 'E Totten-T']].sum(axis=1)
+        df['E Totten'] = df[['E Totten-D', 'E Totten-M', 'E Totten-T']].sum(axis=1)
     elif dest == 3:
         #dest3: mnu, mer, mwl, mst, tnu, ter, twl, tst, dnu, der, dwl, dst
         df['S Huron Church-D'] = agg_i[0][['U-Turn', 'Right.1', 'Left.3', 'Thru.2']].sum(axis=1)
         df['S Huron Church-T'] = agg_i[1][['U-Turn', 'Right.1', 'Left.3', 'Thru.2']].sum(axis=1)
         df['S Huron Church-M'] = agg_i[2][['U-Turn', 'Right.1', 'Left.3', 'Thru.2']].sum(axis=1)
-        df['S Huron Church-All'] = df[['S Huron Church-D', 'S Huron Church-M', 'S Huron Church-T']].sum(axis=1)
+        df['S Huron Church'] = df[['S Huron Church-D', 'S Huron Church-M', 'S Huron Church-T']].sum(axis=1)
     elif dest == 4:
         #dest 4: mnl, meu, mwt, msr, tnu, ter, twl, tst, dnu, der, dwl, dst
         df['W Malden-D'] = agg_i[0][['U-Turn', 'Right.1', 'Left.3', 'Thru.2']].sum(axis=1)
         df['W Malden-T'] = agg_i[0][['U-Turn', 'Right.1', 'Left.3', 'Thru.2']].sum(axis=1)
         df['W Malden-M'] = agg_i[0][['Left', 'U-Turn.1', 'Thru.3', 'Right.2']].sum(axis=1)
-        df['W Malden-All'] = df[['W Malden-D', 'W Malden-M', 'W Malden-T']].sum(axis=1)
+        df['W Malden'] = df[['W Malden-D', 'W Malden-M', 'W Malden-T']].sum(axis=1)
     elif dest == 5:
         #dnl, deu, dwt, dsr, tnl, teu, twt, tsr, mnt, mel, mwr, msu
         df['W Dorch-D'] = agg_i[0][['Left', 'U-Turn.1', 'Thru.3', 'Right.2']].sum(axis=1)
         df['W Dorch-T'] = agg_i[0][['Left', 'U-Turn.1', 'Thru.3', 'Right.2']].sum(axis=1)
         df['W Dorch-M'] = agg_i[0][['Thru', 'Left.1', 'Right.3', 'U-Turn.2']].sum(axis=1)
-        df['W Dorch-All'] = df[['W Dorch-D', 'W Dorch-M', 'W Dorch-T']].sum(axis=1)
+        df['W Dorchester'] = df[['W Dorch-D', 'W Dorch-M', 'W Dorch-T']].sum(axis=1)
     return df
 
 def plot_dests():
@@ -66,19 +71,30 @@ def plot_dests():
     for i in range(6):
         dests.append(destination_traffic(i))
         dests_grouped.append(dests[i].groupby([dests[i].index.hour, dests[i].index.minute]).mean())
-    plt.ylabel('Amount of Traffic')
-    plt.xlabel('Date/Time')
-    dests_grouped[0]['N Huron Church-All'].plot(label='N Huron Church')
-    dests_grouped[1]['E Dorch-All'].plot(label='E Dorch')
-    dests_grouped[2]['E Totten-All'].plot(label='E Totten')
-    dests_grouped[3]['S Huron Church-All'].plot(label='S Huron Church')
-    dests_grouped[4]['W Malden-All'].plot(label='W Malden')
-    dests_grouped[5]['W Dorch-All'].plot(label='W Dorch')
-    plt.legend(loc="upper right")
-    plt.title("Traffic along destination routes")
+    all = pd.concat([dests_grouped[0]['N Huron Church'], dests_grouped[1]['E Dorchester'], dests_grouped[2]['E Totten'], dests_grouped[3]['S Huron Church'], dests_grouped[4]['W Malden'], dests_grouped[5]['W Dorchester']],
+                    axis=1)
+    # print(all)
+    all.plot(title="Traffic along destination routes", xlabel='Time of day (hour, minute)', ylabel='Number of Vehicles')
+    # plt.legend(loc="upper right")
+    # plt.title("Traffic along destination routes")
     plt.show()
+    # plt.ylabel('Amount of Traffic')
+    # plt.xlabel('Date/Time')
 
-# plot_dests()
+    # fig = plt.figure()
+    # for frame in dests_grouped:
+    #     plt.plot(frame.index, frame[[-1]])
+    # ax = dests_grouped[0]['N Huron Church-All'].plot()#(label='N Huron Church')
+    # dests_grouped[1]['E Dorch-All'].plot(ax=ax)#(label='E Dorch', ax=ax)
+    # dests_grouped[2]['E Totten-All'].plot(ax=ax)#(label='E Totten', ax=ax)
+    # dests_grouped[3]['S Huron Church-All'].plot(ax=ax)#(label='S Huron Church', ax=ax)
+    # dests_grouped[4]['W Malden-All'].plot(ax=ax)#(label='W Malden', ax=ax)
+    # dests_grouped[5]['W Dorch-All'].plot(ax=ax)#(label='W Dorch', ax=ax)
+    # plt.legend(loc="upper right")
+    # plt.title("Traffic along destination routes")
+    # plt.show()
+
+
 
 # dest_1 = destination_traffic(0)
 # dest_2 = destination_traffic(1)
@@ -115,6 +131,11 @@ def agg_dir_traffic(intersection):
     # plt.legend(loc="upper right")
     plt.title("N-S vs. E-W traffic on " + intersection_dict[intersection])
     plt.show()
+
+f = open("static/views/graph" + "dests" + ".html", "wb")
+pandas_bokeh.output_file("static/views/graph" + "dests" + ".html")
+plot_dests()
+f.close()
 
 # agg_dir_traffic(0)
 # agg_dir_traffic(1)
