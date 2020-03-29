@@ -51,9 +51,8 @@ def plot_any(intersection, d, i):
     graph_title = d_dict[d] + " " + i_dict[i] + " on " + intersection_dict[intersection]
     plot_intersection(intersections[intersection], d, i, graph_title)
 
-<<<<<<< HEAD
-plot_any(1, 0, 0)
-=======
+
+# plot_any(1, 0, 0)
 # for i in range(3):
 #     for j in range(4):
 #         for k in range(6):
@@ -62,7 +61,6 @@ plot_any(1, 0, 0)
 #             pandas_bokeh.output_file("static/views/graph" + str(i) + str(j) + str(k) + ".html")
 #             plot_any(i, j, k)
 #             f.close()
->>>>>>> c82e412cd8b31fa4a451d58bfa18945e493e62d5
 
 
 ##### MOST OF BELOW CAN NOW BE COMPLETED WITH PLOT_ANY #####
