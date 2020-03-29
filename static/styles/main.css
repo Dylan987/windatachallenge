@@ -1,5 +1,6 @@
 html {
-  background-color: #ae6a9a;
+  background-color: #554562;
+  font-family: "Comic Sans MS";
 }
 
 header {
@@ -42,6 +43,8 @@ iframe {
   padding: 20px;
   display:flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .vehicle-buttons {
@@ -51,15 +54,26 @@ iframe {
   flex-wrap: wrap;
 }
 
-.north-button {
+.north-button, .south-button, .east-button, .west-button {
   overflow: hidden;
   position: relative;
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
   transform: rotate(-45deg);
 }
 
+.compass-text {
+  transform: rotate(45deg);
+}
 
+.middle-row {
+  width: 125px;
+  height: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .street-1-button-selected {
   color: red;
