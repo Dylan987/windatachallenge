@@ -59,6 +59,7 @@ header {
 
 iframe {
   display: inline-block;
+  background-color: white;
 }
 
 .button-container {
@@ -122,7 +123,9 @@ iframe {
   position: relative;
   border-radius: 10px;
   padding: 5px;
-  width: 125px;
+  width: 175px;
+  margin: 2px 2px 2px 2px;
+  font-weight: bold;
 }
 
 .street-1-button:hover, .street-2-button:hover, .street-3-button:hover, .north-button:hover, .south-button:hover, .east-button:hover, .west-button:hover, .general-traffic-button:hover, .single-unit-trucks-button:hover, .articulated-trucks-button:hover, .buses-button:hover, .work-vans-button:hover, .bicycles-button:hover, .pedestrians:hover {
