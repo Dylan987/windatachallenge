@@ -6,8 +6,8 @@ import pandas_bokeh
 
 plt.close('all')
 
-pd.set_option('plotting.backend', 'pandas_bokeh')
-pandas_bokeh.output_file("templates/test.html")
+# pd.set_option('plotting.backend', 'pandas_bokeh')
+# pandas_bokeh.output_file("templates/test.html")
 
 def plot_one(og, d, title):
     plt.close('all')
@@ -35,7 +35,7 @@ def plot_intersection(arr, d, i, graph_title):
     else:
         df = arr[i].iloc[:, np.r_[0, d*6+1:d*6+4]]
     df_grouped = df.groupby([df.index.hour, df.index.minute]).mean()
-    df_grouped.plot(title=graph_title, xlabel='Time of day (hour, minute)', ylabel='Number of Vehicles')
+    df_grouped.plot(title=graph_title)#, xlabel='Time of day (hour, minute)', ylabel='Number of Vehicles')
     plt.show()
 
 # plot_intersection(dorchester_arr,3, 5)
@@ -51,7 +51,7 @@ def plot_any(intersection, d, i):
     graph_title = d_dict[d] + " " + i_dict[i] + " on " + intersection_dict[intersection]
     plot_intersection(intersections[intersection], d, i, graph_title)
 
-# plot_any(2, 1, 0)
+plot_any(1, 0, 0)
 
 
 ##### MOST OF BELOW CAN NOW BE COMPLETED WITH PLOT_ANY #####
