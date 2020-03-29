@@ -91,6 +91,7 @@ iframe {
   position: relative;
   border-radius: 10px;
   padding: 5px;
+  width: 125px;
 }
 
 .street-1-button:hover, .street-2-button:hover, .street-3-button:hover, .north-button:hover, .south-button:hover, .east-button:hover, .west-button:hover, .general-traffic-button:hover, .single-unit-trucks-button:hover, .articulated-trucks-button:hover, .buses-button:hover, .work-vans-button:hover, .bicycles-button:hover, .pedestrians:hover {
@@ -114,62 +115,141 @@ iframe {
 }
 
 .street-1-button-selected {
-  color: red;
+  background-color: #5d739a;
+  color: #272659;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .street-2-button-selected {
-  color: red;
+  background-color: #5d739a;
+  color: #272659;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .street-3-button-selected {
-  color: red;
+  background-color: #5d739a;
+  color: #272659;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .north-button-selected {
-  color: black;
   background-color: #5d739a;
+  color: #272659;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .east-button-selected {
-  color: black;
   background-color: #5d739a;
+  color: #272659;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .south-button-selected {
-  color: black;
   background-color: #5d739a;
+  color: #272659;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .west-button-selected {
-  color: black;
   background-color: #5d739a;
+  color: #272659;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .general-traffic-button-selected {
-  color: blue;
+  background-color: #5d739a;
+  color: #272659;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .single-unit-trucks-button-selected {
-  color: blue;
+  background-color: #5d739a;
+  color: #272659;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .articulated-trucks-button-selected {
-  color: blue;
+  background-color: #5d739a;
+  color: #272659;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .buses-button-selected {
-  color: blue;
+  background-color: #5d739a;
+  color: #272659;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
 }
 
-
 .work-vans-button-selected {
-  color: blue;
+  background-color: #5d739a;
+  color: #272659;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .bicycles-button-selected {
-  color: blue;
+  background-color: #5d739a;
+  color: #272659;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .pedestrians-button-selected {
-  color: blue;
+  background-color: #5d739a;
+  color: #272659;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
 }

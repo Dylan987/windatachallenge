@@ -3,11 +3,18 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from basic_tests import dorchester_arr, malden_arr, totten_arr
 import pandas_bokeh
+import sys
+
 
 plt.close('all')
 
 pd.set_option('plotting.backend', 'pandas_bokeh')
 
+i = sys.argv[1]
+j = sys.argv[2]
+k = sys.argv[3]
+
+pandas_bokeh.output_file("/static/views/graph" + i + j + k + ".html")
 
 def plot_one(og, d, title):
     plt.close('all')
@@ -35,7 +42,7 @@ def plot_intersection(arr, d, i, graph_title):
     else:
         df = arr[i].iloc[:, np.r_[0, d*6+1:d*6+4]]
     df_grouped = df.groupby([df.index.hour, df.index.minute]).mean()
-    df_grouped.plot(title=graph_title)#, xlabel='Time of day (hour, minute)', ylabel='Number of Vehicles')
+    df_grouped.plot(title=graph_title, xlabel='Time of day (hour, minute)', ylabel='Number of Vehicles')
     plt.show()
 
 # plot_intersection(dorchester_arr,3, 5)
@@ -51,18 +58,7 @@ def plot_any(intersection, d, i):
     graph_title = d_dict[d] + " " + i_dict[i] + " on " + intersection_dict[intersection]
     plot_intersection(intersections[intersection], d, i, graph_title)
 
-<<<<<<< HEAD
-plot_any(1, 0, 0)
-=======
-# for i in range(3):
-#     for j in range(4):
-#         for k in range(6):
-#             print(str(i) + str(j) + str(k))
-#             f = open("static/views/graph" + str(i) + str(j) + str(k) + ".html", "wb")
-#             pandas_bokeh.output_file("static/views/graph" + str(i) + str(j) + str(k) + ".html")
-#             plot_any(i, j, k)
-#             f.close()
->>>>>>> c82e412cd8b31fa4a451d58bfa18945e493e62d5
+plot_any(i, j, k)
 
 
 ##### MOST OF BELOW CAN NOW BE COMPLETED WITH PLOT_ANY #####
