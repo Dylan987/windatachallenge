@@ -2,8 +2,12 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from basic_tests import dorchester_arr, malden_arr, totten_arr
+import pandas_bokeh
 
 plt.close('all')
+
+pd.set_option('plotting.backend', 'pandas_bokeh')
+pandas_bokeh.output_file("templates/test.html")
 
 def plot_data(df): # plot data for one direction of traffic at an intersection
     df.plot()
@@ -60,3 +64,9 @@ plt.show()
 # print(dler.info)
 # plot_data(dler)
 # plt.show()
+
+dlnr = d_lights_n.groupby([d_lights_n.index.hour, d_lights_n.index.minute]).mean()
+
+plt.figure()
+dlnr.plot()
+
