@@ -116,4 +116,6 @@ def agg_dir_traffic(intersection):
     plt.title("N-S vs. E-W traffic on " + intersection_dict[intersection])
     plt.show()
 
+# agg_dir_traffic(0)
 # agg_dir_traffic(1)
+# agg_dir_traffic(2)

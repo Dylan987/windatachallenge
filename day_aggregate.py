@@ -35,7 +35,7 @@ def plot_intersection(arr, d, i, graph_title):
     else:
         df = arr[i].iloc[:, np.r_[0, d*6+1:d*6+4]]
     df_grouped = df.groupby([df.index.hour, df.index.minute]).mean()
-    df_grouped.plot(title=graph_title)#, xlabel='Time of day (hour, minute)', ylabel='Number of Vehicles')
+    df_grouped.plot(title=graph_title, xlabel='Time of day (hour, minute)', ylabel='Number of Vehicles')
     plt.show()
 
 # plot_intersection(dorchester_arr,3, 5)
