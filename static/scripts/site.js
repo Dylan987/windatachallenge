@@ -6,6 +6,7 @@ $(document).ready(function() {
     
     // add the event listeners
     const update_graph = function() {
+        console.log("entered update grpah");
         // call the AJAX method with the given params 
         $.get(window.location.host + "/update_graph" + "?intersection=" + current_street + "&direction=" + current_direction + "&traffic=" + current_vehicle);
         // update the css
@@ -15,6 +16,7 @@ $(document).ready(function() {
     // adding event listeners
     $('.street-1-button').click(() => {
         current_street = 0;
+        console.log("entered stb1");
         update_graph();
     });
     $('.street-2-button').click(() => {
