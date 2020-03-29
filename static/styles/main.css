@@ -12,6 +12,37 @@ header {
   border-radius: 20px;
 }
 
+.nav {
+  display: inline-block;
+}
+
+.nav ul {
+  background-color: transparent;
+  outline: solid black 2px;
+  list-style-type: none;
+  padding-inline-start: 0px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: space-around;
+  background-color: #5d739a;
+  width: 500px;
+}
+.nav li {
+  display: block;
+}
+
+.nav a {
+  display: inline-block;
+  padding: 8px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  background-color: gray;
+}
+
 .body {
   padding: 10px;
   display: flex;
@@ -114,142 +145,7 @@ iframe {
   align-items: center;
 }
 
-.street-1-button-selected {
+.street-1-button, .south-button, .general-traffic-button {
   background-color: #5d739a;
   color: #272659;
-  border: solid 3px #5d739a;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.street-2-button-selected {
-  background-color: #5d739a;
-  color: #272659;
-  border: solid 3px #5d739a;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.street-3-button-selected {
-  background-color: #5d739a;
-  color: #272659;
-  border: solid 3px #5d739a;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.north-button-selected {
-  background-color: #5d739a;
-  color: #272659;
-  border: solid 3px #5d739a;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.east-button-selected {
-  background-color: #5d739a;
-  color: #272659;
-  border: solid 3px #5d739a;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.south-button-selected {
-  background-color: #5d739a;
-  color: #272659;
-  border: solid 3px #5d739a;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.west-button-selected {
-  background-color: #5d739a;
-  color: #272659;
-  border: solid 3px #5d739a;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.general-traffic-button-selected {
-  background-color: #5d739a;
-  color: #272659;
-  border: solid 3px #5d739a;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.single-unit-trucks-button-selected {
-  background-color: #5d739a;
-  color: #272659;
-  border: solid 3px #5d739a;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.articulated-trucks-button-selected {
-  background-color: #5d739a;
-  color: #272659;
-  border: solid 3px #5d739a;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.buses-button-selected {
-  background-color: #5d739a;
-  color: #272659;
-  border: solid 3px #5d739a;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.work-vans-button-selected {
-  background-color: #5d739a;
-  color: #272659;
-  border: solid 3px #5d739a;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.bicycles-button-selected {
-  background-color: #5d739a;
-  color: #272659;
-  border: solid 3px #5d739a;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-.pedestrians-button-selected {
-  background-color: #5d739a;
-  color: #272659;
-  border: solid 3px #5d739a;
-  overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-  padding: 5px;
 }
