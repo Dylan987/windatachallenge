@@ -1,0 +1,17 @@
+html {
+  background-color: #ae6a9a;
+}
+
+header {
+  border: solid black 1px;
+  background-color: white;
+  margin: auto;
+  padding: -10px;
+  text-align: center;
+}
+
+.body {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
