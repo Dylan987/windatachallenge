@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from basic_tests import dorchester_arr, malden_arr, totten_arr, dorchester_data
+from basic_tests import dorchester_arr, malden_arr, totten_arr
 from day_aggregate import plot_any, plot_one
 
 intersections = [dorchester_arr, malden_arr, totten_arr]
@@ -63,13 +63,14 @@ def plot_dests():
         dests_grouped.append(dests[i].groupby([dests[i].index.hour, dests[i].index.minute]).mean())
     plt.ylabel('Amount of Traffic')
     plt.xlabel('Date/Time')
-    dests_grouped[0]['N Huron Church-All'].plot(label='N Huron Church-All')
-    dests_grouped[1]['E Dorch-All'].plot(label='E Dorch-All')
-    dests_grouped[2]['E Totten-All'].plot(label='E Totten-All')
-    dests_grouped[3]['S Huron Church-All'].plot(label='S Huron Church-All')
-    dests_grouped[4]['W Malden-All'].plot(label='W Malden-All')
-    dests_grouped[5]['W Dorch-All'].plot(label='W Dorch-All')
+    dests_grouped[0]['N Huron Church-All'].plot(label='N Huron Church')
+    dests_grouped[1]['E Dorch-All'].plot(label='E Dorch')
+    dests_grouped[2]['E Totten-All'].plot(label='E Totten')
+    dests_grouped[3]['S Huron Church-All'].plot(label='S Huron Church')
+    dests_grouped[4]['W Malden-All'].plot(label='W Malden')
+    dests_grouped[5]['W Dorch-All'].plot(label='W Dorch')
     plt.legend(loc="upper right")
+    plt.title("Traffic along destination routes")
     plt.show()
 
 # plot_dests()
@@ -91,6 +92,8 @@ def plot_dests():
 
 # This gets the max amount of traffic going in N-S and E-W and then plots them against each other
 def agg_dir_traffic(intersection):
+    intersection_dict = {0: 'Huron Church & Dorchester', 1: 'Huron Church & Malden', 2: 'Huron Church & Totten'}
+
     agg_i[intersection]['n_sum'] = agg_i[intersection][['Right', 'Thru', 'Left', 'U-Turn', 'Peds CW', 'Peds CCW']].sum(axis=1)
     agg_i[intersection]['e_sum'] = agg_i[intersection][['Right.1', 'Thru.1', 'Left.1', 'U-Turn.1', 'Peds CW.1', 'Peds CCW.1']].sum(axis=1)
     agg_i[intersection]['s_sum'] = agg_i[intersection][['Right.2', 'Thru.2', 'Left.2', 'U-Turn.2', 'Peds CW.2', 'Peds CCW.2']].sum(axis=1)
@@ -98,9 +101,13 @@ def agg_dir_traffic(intersection):
     agg_i[intersection]['ns_max'] = agg_i[intersection][['n_sum', 's_sum']].max(axis=1)
     agg_i[intersection]['ew_max'] = agg_i[intersection][['e_sum', 'w_sum']].max(axis=1)
 
+    agg_grouped = agg_i[intersection].groupby([agg_i[intersection].index.hour, agg_i[intersection].index.minute]).mean()
+    ax1 = agg_grouped['ns_max'].plot(label="N-S Traffic")
+    ax2 = agg_grouped['ew_max'].plot(label="E-W Traffic")
     plt.ylabel('Amount of Traffic')
-    plt.xlabel('Date/Time')
-    ax1 = agg_i[intersection]['ns_max'].plot(label="N-S Traffic")
-    ax2 = agg_i[intersection]['ew_max'].plot(label="E-W Traffic")
+    plt.xlabel('Time of day (hour, minute)')
     plt.legend(loc="upper right")
+    plt.title("N-S vs. E-W traffic on " + intersection_dict[intersection])
     plt.show()
+
+agg_dir_traffic(1)

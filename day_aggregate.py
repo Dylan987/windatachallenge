@@ -21,28 +21,21 @@ def plot_one(og, d, title):
     ax = plt.axes()
     ax.set_xlabel("Time of day (hour, minute)")
     ax.set_ylabel("# of vehicles")
-    plt.legend(loc="upper right")
+
     plt.show()
 
 # arr = array of dfs representing an intersection
 # d = direction (N = 0, E = 1, S = 2, W = 3)
 # i = index of arr with the df you want to graph
-def plot_intersection(arr, d, i):
+def plot_intersection(arr, d, i, graph_title):
     plt.close('all')
-    d_dict = {0: 'Southbound', 1: 'Westbound', 2: 'Northbound', 3: 'Eastbound'}
-    i_dict = {0: 'General Traffic', 1: 'Single-Unit Trucks', 2: 'Articulated Trucks', 3: 'Buses',
-              4: 'Work Vans', 5: 'Bicycles', 6: 'Pedestrians'}
-    graph_title= d_dict[d] + " " + i_dict[i]
+
     if (d==0):
         df = arr[i].iloc[:, :6]
     else:
-        df = arr[i].iloc[:, np.r_[0, d*6+1:d*6+6]]
+        df = arr[i].iloc[:, np.r_[0, d*6+1:d*6+4]]
     df_grouped = df.groupby([df.index.hour, df.index.minute]).mean()
-    df_grouped.plot(title=graph_title)
-    ax = plt.axes()
-    ax.set_xlabel("Time of day (hour, minute)")
-    ax.set_ylabel("# of vehicles")
-    plt.legend(loc="upper right")
+    df_grouped.plot(title=graph_title, xlabel='Time of day (hour, minute)', ylabel='Number of Vehicles')
     plt.show()
 
 # plot_intersection(dorchester_arr,3, 5)
@@ -51,9 +44,14 @@ intersections = [dorchester_arr, malden_arr, totten_arr]
 
 # intersection: 0 = dorch, 1 = malden, 2 = totten
 def plot_any(intersection, d, i):
-    plot_intersection(intersections[intersection], d, i)
+    intersection_dict = {0: 'Huron Church & Dorchester', 1: 'Huron Church & Malden', 2: 'Huron Church & Totten'}
+    d_dict = {0: 'Southbound', 1: 'Westbound', 2: 'Northbound', 3: 'Eastbound'}
+    i_dict = {0: 'General Traffic', 1: 'Single-Unit Trucks', 2: 'Articulated Trucks', 3: 'Buses',
+              4: 'Work Vans', 5: 'Bicycles', 6: 'Pedestrians'}
+    graph_title = d_dict[d] + " " + i_dict[i] + " on " + intersection_dict[intersection]
+    plot_intersection(intersections[intersection], d, i, graph_title)
 
-# plot_any(0, 0, 0)
+# plot_any(2, 1, 0)
 
 
 ##### MOST OF BELOW CAN NOW BE COMPLETED WITH PLOT_ANY #####
