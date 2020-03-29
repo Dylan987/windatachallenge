@@ -51,6 +51,16 @@ iframe {
   flex-wrap: wrap;
 }
 
+.north-button {
+  overflow: hidden;
+  position: relative;
+  width: 75px;
+  height: 75px;
+  transform: rotate(-45deg);
+}
+
+
+
 .street-1-button-selected {
   color: red;
 }
