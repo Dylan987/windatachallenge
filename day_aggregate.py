@@ -9,14 +9,26 @@ plt.close('all')
 pd.set_option('plotting.backend', 'pandas_bokeh')
 pandas_bokeh.output_file("templates/test.html")
 
-def plot_data(df): # plot data for one direction of traffic at an intersection
-    df.plot()
+def plot_one(og, d, title):
+    plt.close('all')
+    graph_title = title
+    if (d==0):
+        df = og.iloc[:, :6]
+    else:
+        df = og.iloc[:, np.r_[0, d*6+1:d*6+6]]
+    df_grouped = df.groupby([df.index.hour, df.index.minute]).mean()
+    df_grouped.plot(title=graph_title)
+    ax = plt.axes()
+    ax.set_xlabel("Time of day (hour, minute)")
+    ax.set_ylabel("# of vehicles")
     plt.legend(loc="upper right")
+    plt.show()
 
-# arr = array of dfs
+# arr = array of dfs representing an intersection
 # d = direction (N = 0, E = 1, S = 2, W = 3)
 # i = index of arr with the df you want to graph
-def plot_any(arr, d, i):
+def plot_intersection(arr, d, i):
+    plt.close('all')
     d_dict = {0: 'Southbound', 1: 'Westbound', 2: 'Northbound', 3: 'Eastbound'}
     i_dict = {0: 'General Traffic', 1: 'Single-Unit Trucks', 2: 'Articulated Trucks', 3: 'Buses',
               4: 'Work Vans', 5: 'Bicycles', 6: 'Pedestrians'}
@@ -26,17 +38,30 @@ def plot_any(arr, d, i):
     else:
         df = arr[i].iloc[:, np.r_[0, d*6+1:d*6+6]]
     df_grouped = df.groupby([df.index.hour, df.index.minute]).mean()
-    ax = df_grouped.plot(title=graph_title)
+    df_grouped.plot(title=graph_title)
+    ax = plt.axes()
     ax.set_xlabel("Time of day (hour, minute)")
     ax.set_ylabel("# of vehicles")
     plt.legend(loc="upper right")
+    plt.show()
 
-plot_any(dorchester_arr,3, 5)
-plt.show()
+# plot_intersection(dorchester_arr,3, 5)
+
+intersections = [dorchester_arr, malden_arr, totten_arr]
+
+# intersection: 0 = dorch, 1 = malden, 2 = totten
+def plot_any(intersection, d, i):
+    plot_intersection(intersections[intersection], d, i)
+
+plot_any(0, 0, 0)
+
 
 ##### MOST OF BELOW CAN NOW BE COMPLETED WITH PLOT_ANY #####
 ### Setup
 # d_lights_n = dorchester_arr[0].iloc[:, :6]
+# dlnr = d_lights_n.groupby([d_lights_n.index.hour, d_lights_n.index.minute]).mean()
+# plt.figure()
+# dlnr.plot()
 # d_lights_n['Start Time'] = pd.to_datetime(d_lights_n['Start Time'])
 # d_lights_n.set_index(['Start Time'], inplace=True)
 
@@ -65,8 +90,5 @@ plt.show()
 # plot_data(dler)
 # plt.show()
 
-dlnr = d_lights_n.groupby([d_lights_n.index.hour, d_lights_n.index.minute]).mean()
 
-plt.figure()
-dlnr.plot()
 
