@@ -3,17 +3,25 @@ $(document).ready(function() {
     let current_street = 0;
     let current_direction = 0;
     let current_vehicle = 0;
-    
+    console.log("hi there!");
+
+
     // add the event listeners
     const update_graph = function() {
-        console.log("entered update grpah");
-        // call the AJAX method with the given params 
-        $.get(window.location.host + "/update_graph" + "?intersection=" + current_street + "&direction=" + current_direction + "&traffic=" + current_vehicle);
+        console.log("entered update graph");
+        // call the AJAX method with the given params
+        //$.get(window.location.host + "/update_graph" + "?intersection=" + current_street + "&direction=" + current_direction + "&traffic=" + current_vehicle);
+        document.getElementByTagName("iframe")[0].src = "static/views/graph" + current_street + "" + current_direction + "" + current_vehicle + ".html";
         // update the css
     };
 
 
     // adding event listeners
+    document.getElementByClassName("street-1-button").addEventListener("click", function(){
+      current_street = 0;
+      console.log("got here");
+      update_graph();
+    });
     $('.street-1-button').click(() => {
         current_street = 0;
         console.log("entered stb1");
@@ -69,10 +77,5 @@ $(document).ready(function() {
         current_vehicle = 5;
         update_graph();
     });
-    $('pedestrians-button').click(() => {
-        current_vehicle = 6;
-        update_graph();
-    });
 
 });
-
