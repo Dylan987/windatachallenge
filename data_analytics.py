@@ -6,11 +6,16 @@ from day_aggregate import plot_any, plot_one
 
 intersections = [dorchester_arr, malden_arr, totten_arr]
 agg_i = []
+agg_grouped = []
 
 for i in range(3):
     merge_df = pd.concat(intersections[i])
     agg_df = merge_df.resample('15min').sum()
     agg_i.append(agg_df)
+
+for i in range (3):
+    agg_grouped.append(agg_i[i].groupby([agg_i[i].index.hour, agg_i[i].index.minute]).mean())
+    print(agg_grouped[i].describe())
 
 # This finds the total amount of traffic going to a given destination
 def destination_traffic(dest):
@@ -98,16 +103,17 @@ def agg_dir_traffic(intersection):
     agg_i[intersection]['e_sum'] = agg_i[intersection][['Right.1', 'Thru.1', 'Left.1', 'U-Turn.1', 'Peds CW.1', 'Peds CCW.1']].sum(axis=1)
     agg_i[intersection]['s_sum'] = agg_i[intersection][['Right.2', 'Thru.2', 'Left.2', 'U-Turn.2', 'Peds CW.2', 'Peds CCW.2']].sum(axis=1)
     agg_i[intersection]['w_sum'] = agg_i[intersection][['Right.3', 'Thru.3', 'Left.3', 'U-Turn.3', 'Peds CW.3', 'Peds CCW.3']].sum(axis=1)
-    agg_i[intersection]['ns_max'] = agg_i[intersection][['n_sum', 's_sum']].max(axis=1)
-    agg_i[intersection]['ew_max'] = agg_i[intersection][['e_sum', 'w_sum']].max(axis=1)
+    agg_i[intersection]['N-S Traffic'] = agg_i[intersection][['n_sum', 's_sum']].max(axis=1)
+    agg_i[intersection]['E-W Traffic'] = agg_i[intersection][['e_sum', 'w_sum']].max(axis=1)
 
     agg_grouped = agg_i[intersection].groupby([agg_i[intersection].index.hour, agg_i[intersection].index.minute]).mean()
-    ax1 = agg_grouped['ns_max'].plot(label="N-S Traffic")
-    ax2 = agg_grouped['ew_max'].plot(label="E-W Traffic")
-    plt.ylabel('Amount of Traffic')
-    plt.xlabel('Time of day (hour, minute)')
-    plt.legend(loc="upper right")
+    ax1 = agg_grouped[['N-S Traffic', 'E-W Traffic']].plot(title = "N-S vs. E-W traffic on " + intersection_dict[intersection],
+                                                           xlabel='Time of day (hour, minute)', ylabel='# of vehicles')#(label="N-S Traffic")
+    # ax2 = agg_grouped['ew_max'].plot()#(label="E-W Traffic")
+    # plt.ylabel('Amount of Traffic')
+    # plt.xlabel('Time of day (hour, minute)')
+    # plt.legend(loc="upper right")
     plt.title("N-S vs. E-W traffic on " + intersection_dict[intersection])
     plt.show()
 
-agg_dir_traffic(1)
+# agg_dir_traffic(1)
