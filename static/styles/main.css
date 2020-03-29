@@ -1,13 +1,15 @@
 html {
-  background-color: #ae6a9a;
+  background-image: linear-gradient(black, #272659);
+  font-family: "Century Gothic";
+  color: #5d739a;
 }
 
 header {
-  border: solid black 1px;
-  background-color: white;
+  border: solid #5d739a 5px;
   margin: auto;
   padding: -10px;
   text-align: center;
+  border-radius: 20px;
 }
 
 .body {
@@ -33,22 +35,82 @@ iframe {
 }
 
 .street-buttons {
+  height: 100px;
   padding: 20px;
   display:flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .direction-buttons {
   padding: 20px;
   display:flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .vehicle-buttons {
+  height: 65px;
   padding: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.street-1-button, .street-2-button, .street-3-button {
+  background-color: transparent;
+  color: #5d739a;
+  border: solid 2.75px #5d739a;
+  overflow: hidden;
+  position: relative;
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.north-button, .south-button, .east-button, .west-button {
+  background-color: transparent;
+  color: #5d739a;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  transform: rotate(-45deg);
+}
+
+.general-traffic-button, .single-unit-trucks-button, .articulated-trucks-button, .buses-button, .work-vans-button, .bicycles-button, .pedestrians {
+  background-color: transparent;
+  color: #5d739a;
+  border: solid 3px #5d739a;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.street-1-button:hover, .street-2-button:hover, .street-3-button:hover, .north-button:hover, .south-button:hover, .east-button:hover, .west-button:hover, .general-traffic-button:hover, .single-unit-trucks-button:hover, .articulated-trucks-button:hover, .buses-button:hover, .work-vans-button:hover, .bicycles-button:hover, .pedestrians:hover {
+  background-color: #5d739a;
+  color: #272659;
+}
+
+.compass-text {
+  text-align: center;
+  font-weight: bold;
+  transform: rotate(45deg);
+}
+
+.middle-row {
+  width: 125px;
+  height: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .street-1-button-selected {
@@ -64,19 +126,23 @@ iframe {
 }
 
 .north-button-selected {
-  color: blue;
+  color: black;
+  background-color: #5d739a;
 }
 
 .east-button-selected {
-  color: blue;
+  color: black;
+  background-color: #5d739a;
 }
 
 .south-button-selected {
-  color: blue;
+  color: black;
+  background-color: #5d739a;
 }
 
 .west-button-selected {
-  color: blue;
+  color: black;
+  background-color: #5d739a;
 }
 
 .general-traffic-button-selected {

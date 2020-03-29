@@ -24,7 +24,7 @@ def update():
 @app.route('/home.html')
 @app.route('/home')
 def hello_world():
-    return render_template("test.html")
+    return render_template("site.html")
 
 
 if __name__ == '__main__':
