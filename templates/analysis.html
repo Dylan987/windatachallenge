@@ -22,5 +22,38 @@
           </ul>
         </div>
     </header>
+    <p class="small-message">(Scroll down for analysis)</p>
+    <div class="graphs">
+      <div class="graphs-row">
+        <div class="graph-container1">
+            <iframe src="static/views/graphdests.html" width=600 height=420></iframe>
+        </div>
+        <div class="graph-container1">
+            <iframe src="static/views/graphnsewtraffic0.html" width=600 height=420></iframe>
+        </div>
+      </div>
+      <div class="graphs-row">
+        <div class="graph-container1">
+            <iframe src="static/views/graphnsewtraffic1.html" width=600 height=420></iframe>
+        </div>
+        <div class="graph-container1">
+            <iframe src="static/views/graphnsewtraffic2.html" width=600 height=420></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="analysis">
+      <h3>Traffic Data Analysis </h3>
+      <p class="smol-header">Current Situation</p>
+      <p>Based on the given Operations & Timing Report, the current configuration of traffic light signals at Heron Church Street intersections with Dorchester Road, Totten Street, and Malden Road is static in regards to its phases and patterns. However, by examining not only the graphs above but also the graphs in the Intersections Dashboard, it can be seen that there is a lot of variation in the amount of traffic between peak and off-hours due to Huron Church St. being a large main road. Consequently, it becomes difficult to create static signal patterns that can accommodate for busy traffic without creating excessive wait times during off-hours.</p>
+      <p class="smol-header">Analysis and Recommendations</p>
+      <p class="smoller-header">Traffic Along Destination Routes</p>
+      <p>As it turns out, traffic flowing northbound along Huron Church St. is extremely busy in the morning, which is visualized in the graph in the top-left. However, all three intersections experience traffic peaks at 8:00AM with approximately the same amount of traffic (around 350 vehicles), indicating that there exists, understandably, a high number of cars on the road as a result of the rush hour. However, these numbers are consistent, and this peak in traffic drops off rapidly, implying that there isn't any back-up occurring. Because of this, the signal lengths at these intersections and times are likely sufficient.</p>
+      <p>As well, the graph of destination routes shows that traffic peaks in the afternoon, with many routes having heavy traffic. In particular, there is a high volume of traffic flowing southbound along Huron Church St. (likely due to workers travelling from the US back to Canada). However, in contrast to the morning rush hour, the Dorchester intersection peaks at volume about 50 vehicles less than at the Totten and Malden intersections, which peak at over 350 vehicles every 15 minutes. Since vehicles travelling southbound down Huron Church St. pass through Dorchester before reaching Totten and Malden, the increasing volume of traffic at later intersections indicates that traffic may be building up further down the road. As well, traffic at Totten and Malden remains at over 300 vehicles for several hours (approximately 3:00PM-6:00PM), indicating that there is higher and longer lasting congestion than in the morning peak. To reduce this congestion, the minimum and maximum green times for the SBT signal should be increased at Totten and Malden during afternoon peak hours to allow traffic to pass through.</p>
+      <p class="smoller-header">N-S vs. E-W Traffic</p>
+      <p>Between the hours of 11:00PM and 5:30AM, the levels of traffic are extremely low, with fewer than 100 vehicles travelling either northbound or southbound. The recommendation, then, is to decrease NBT and SBT traffic signal lengths during off-hours to reduce wait times for the smaller residential streets. Later in the day, from 9:00AM to 1:00PM, moderate levels of traffic are observed within the aforementioned graphs, with fewer than 250 vehicles along Huron Church St. As such, it is optimal to maintain the current signals for this time frame.</p>
+      <p>Eastbound and westbound traffic is generally low throughout the average day with typically less than or approximately 50 vehicles as seen in the three N-S vs. E-W Traffic graphs. Because the three roads running east to west are smaller roads in comparison to Huron Church St., they experience less traffic overall. Because there are few vehicles on the road (approximately ten) between midnight and 5:00AM, signal times may be reduced to marginally improve traffic flow within these hours. It can also be observed that Dorchester Rd. has the lowest eastbound and westbound traffic flow overall, likely due to its proximity to the Canada - United States border. As such, the signal length of through northbound/southbound traffic can be increased to yield higher traffic flow. Finally, the Totten St. and Malden Rd. intersections are seen to experience minor increases in eastbound and westbound traffic around both rush hours; longer turn signals and more frequent signal changes would improve efficiency at these times.</p>
+      <p class="smol-header">Conclusion</p>
+      <p>Through our analysis of traffic along Huron Church Street, it is clear that traffic and wait times can be reduced by modifying signals according to different times of day. In particular, we have three suggestions: First, the minimum and maximum green light times should be increased on southbound through signals for Totten St. and Malden Rd. during afternoon rush hours (3:00PM - 6:00PM). Second, during off-hours (11:00PM - 5:30PM), traffic signal lengths should be dramatically reduced due to an extremely low volume of vehicles on the road. Third, turn signals could be increased and signal changes could be more frequent in the east and west directions during peak hours in order to improve efficiency in the east and westbound directions. Our analysis has shown that there are clear patterns indicating times at which backups are most prominent. Ultimately, by implementing our suggestions, traffic will flow more smoothly both along the corridor and on local streets.</p>
+    </div>
   </body>
 </html>

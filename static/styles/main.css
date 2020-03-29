@@ -18,29 +18,33 @@ header {
 
 .nav ul {
   background-color: transparent;
-  outline: solid black 2px;
   list-style-type: none;
   padding-inline-start: 0px;
   display: flex;
   flex-direction: row;
   text-align: center;
   justify-content: space-around;
-  background-color: #5d739a;
   width: 500px;
 }
 .nav li {
+  width: 100%;
   display: block;
+  border: #5d739a 3px solid;
+  border-radius: 10px;
 }
 
 .nav a {
+  width: 100%;
   display: inline-block;
-  padding: 8px 20px;
+  padding: 8px 0px;
   color: white;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .nav a:hover {
-  background-color: gray;
+  background-color: #5d739a;
+  color: #272659;
 }
 
 .body {
@@ -51,15 +55,48 @@ header {
   align-items: center;
 }
 
+.graphs {
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.graph-container1 {
+  padding: 5px;
+  justify-content: center;
+  text-align: center;
+}
+
 .graph-container {
   flex: 2;
   justify-content: center;
   text-align: center;
 }
 
+.small-message{
+  text-align: center;
+}
+
 iframe {
   display: inline-block;
   background-color: white;
+}
+
+.analysis {
+  background-color: white;
+  padding: 10px 20px;
+  color: #272659;
+  margin: 10px 20px;
+  text-align: left;
+}
+
+.smol-header {
+  font-weight: bold;
+}
+
+.smoller-header {
+  font-style: italic;
 }
 
 .button-container {
