@@ -53,7 +53,7 @@ intersections = [dorchester_arr, malden_arr, totten_arr]
 def plot_any(intersection, d, i):
     plot_intersection(intersections[intersection], d, i)
 
-plot_any(0, 0, 0)
+# plot_any(0, 0, 0)
 
 
 ##### MOST OF BELOW CAN NOW BE COMPLETED WITH PLOT_ANY #####
